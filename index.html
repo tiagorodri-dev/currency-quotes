@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Conversor de Câmbio</title>
+</head>
+
+<body>
+    <div class="principal">
+        <img src="./assets/background(1).jpg" alt=""
+            style="position: absolute; background-size: cover; width: 100%; z-index: -3;">
+
+        <header>
+            <div class="slide"
+                style="position: relative; top:0; overflow: hidden; padding: 35px; height: 100px;">
+
+                <div class="teste">
+                    <div class="text" style="color: #ffffff;">
+                        USD/BRL
+                    </div>
+
+                    <div class="imagem" style="display: flex; flex-direction: column;">
+                        <div class="imagem-moeda">
+                            <img src="./assets/dolar-americano.png" alt="" width="30">
+                            <img src="./assets/real-brasileiro.png" alt="" width="30">
+                        </div>
+                        <span class="percentual-moeda" style="color: white;"></span>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <main>
+
+            <label>
+                Converter <b>de</b>
+                <select class="moeda-base select">
+                    <option value="USD">Dólar Americano</option>
+                    <option value="EUR">Euro</option>
+                    <option value="JPY">Iene Japonês</option>
+                    <option value="GBP">Libra Esterlina</option>
+                    <option value="CHF">Franco Suiço</option>
+                    <option value="CAD">Dólar Canadense</option>
+                    <option value="AUD">Dólar Australiano</option>
+                    <option value="CNY">Yuan Chinês</option>
+                    <option value="ARS">Peso Argentino</option>
+                </select>
+            </label>
+
+            <label>
+                Converter <b>para</b>
+                <select class="moeda-secundaria select">
+                    <option value="BRL">Real Brasileiro</option>
+                </select>
+            </label>
+
+            <!-- <form action="#"> -->
+            <label>
+                Valor
+                <input class="valor" placeholder="Ex: 100" required>
+            </label>
+
+            <!-- </form> -->
+
+            <section class="box">
+                <div class="currency-box">
+                    <img src="./assets/dolar-americano.png" alt="logo-moeda-base" class="img-moeda-base">
+                    <p class="text-moeda-base">Dólar Americano</p>
+                    <p class="valor-moeda-base">$0,00</p>
+                </div>
+
+                <img class="arrow-img" src="./assets/arrow.png" alt="flecha">
+
+                <div class="currency-box">
+                    <img src="./assets/real-brasileiro.png" alt="logo-moeda-secundária" class="img-moeda-secundaria">
+                    <p class="text-moeda-secundaria">Real Brasileiro</p>
+                    <p class="valor-moeda-secundaria">0,00</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+<script src="app.js"></script>
+
+</html>

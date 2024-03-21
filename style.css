@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.principal {
+    height: 100vh;
+}
+
+.teste {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    width: 150px;
+    height: 200px;
+    animation: moeda 22s infinite linear;
+}
+
+@keyframes moeda {
+    to {
+        left: -50px;
+    }
+
+    from {
+        left: 100%;
+    }
+}
+
+main {
+    width: 375px;
+    background: #F4F4F4;
+    border-radius: 20px;
+    margin: 0 auto 40px;
+    padding: 44px 24px 23px;
+}
+
+label {
+    color: #777777;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+select, input {
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    background: #ffffff;
+    border: 1px solid #BBBBBB;
+    margin-bottom: 24px;
+    padding-left: 18px;
+    font-weight: 700;
+    color: #555555;
+    font-size: 16px;
+}
+
+input {
+    cursor: pointer;
+}
+
+button {
+    border-radius: 5px;
+    background: #772FD3;
+    width: 100%;
+    border: none;
+    color: #ffffff;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    opacity: 0.6;
+}
+
+section {
+    border: 1px solid #772FD3;
+    border-radius: 20px;
+    margin-top: 36px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrow-img {
+    margin: 15px 0;
+}
+
+.currency-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.text-moeda-base, .text-moeda-secundaria {
+    color: #777777;
+    font-size: 14px;
+}
+
+.valor-moeda-base, .valor-moeda-secundaria {
+    color: #555555;
+    font-weight: 700;
+    font-size: 20px;
+}
