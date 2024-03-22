@@ -9,6 +9,7 @@ const botaoConverter = document.querySelector(".converter");
 const imgMoedaBase = document.querySelector(".img-moeda-base");
 const textMoedaBase = document.querySelector(".text-moeda-base");
 const valorMoedaBase = document.querySelector(".valor-moeda-base");
+const variacao = document.querySelector(".variacao")
 
 const imgMoedaSecundaria = document.querySelector(".img-moeda-secundaria")
 const textMoedaSecundaria = document.querySelector(".text-moeda-secundaria");
@@ -32,7 +33,6 @@ async function pegarCotacoes(moedaFinal, valorInput) {
         // cálculo de cotação
         let valorConvertido = 0;
         if (moedaFinal == 'USD-BRL') {
-            const percentualMoeda = document.querySelector(".percentual-moeda");
 
             valorConvertido = data.USDBRL.bid * valorInput;
             valorMoedaBase.innerHTML = new Intl.NumberFormat('en-US', {
@@ -40,11 +40,20 @@ async function pegarCotacoes(moedaFinal, valorInput) {
                 currency: 'USD'
             }).format(valorInput);
 
-            percentualMoeda.innerHTML = data.USDBRL.varBid
+            // variacao = data.USDBRL.varBid
+
+            // if (variacao != Number.NEGATIVE_INFINITY) {
+            //     variacao.style.color = 'green'
+            //     variacao.textContent = data.USDBRL.varBid
+            // }
+
+            // else {
+            //     variacao.innerHTML = data.USDBRL.varBid
+            //     variacao.style.color = 'red'
+            // }
         }
 
         if(moedaFinal == 'EUR-BRL') {
-            const percentualMoeda = document.querySelector(".percentual-moeda");
 
             valorConvertido = data.EURBRL.bid * valorInput;
 
@@ -53,7 +62,6 @@ async function pegarCotacoes(moedaFinal, valorInput) {
                 currency: 'EUR'
             }).format(valorInput);
 
-            percentualMoeda.innerHTML = data.EURBRL.varBid
         }
 
         if(moedaFinal == 'JPY-BRL') {
@@ -121,8 +129,11 @@ async function pegarCotacoes(moedaFinal, valorInput) {
 
         valorMoedaSecundaria.innerHTML = new Intl.NumberFormat('pt-BR', {
             style: 'currency',
-            currency: 'BRL'
+            currency: 'BRL',
         }).format(valorConvertido.toFixed(2)) // Arredonda para 2 casas decimais
+
+        const atualizacao = document.querySelector(".atualizacao")
+        atualizacao.innerHTML = 'Ultima atualização às ' + data.USDBRL.create_date
     }
 
     catch (error) {
@@ -206,21 +217,29 @@ function moedaBaseAlterada() {
     }
 }
 
-window.onload = function() {
-    // const moeda
-    // while(moeda >= 0) {
+let timeRotation = 4000;
+let currentImageIndex = 0;
+let images = document.querySelectorAll("#slider img");
+let max = images.length;
 
-    // }
-    const moedaFinalPadrao = 'USD-BRL'; // Defina a moeda final padrão
-    pegarCotacoes(moedaFinalPadrao, 1); // Chama a função com valor padrão (1, por exemplo)
-};
+function proximaImagem() {
 
-// EUR/USD
-// GBP/USD
-// USD/JPY
-// USD/CHF
-// AUD/USD
-// USD/CAD
-// CAD/CHF
-// USD/BRL
-// AUD/CAD
+    images[currentImageIndex].classList.remove("selected")
+    currentImageIndex++
+
+    if(currentImageIndex >= max) {
+        currentImageIndex = 0
+    }
+
+    images[currentImageIndex].classList.add("selected")
+}
+
+function iniciar() {
+    setInterval(() => {
+        // chamando função de troca de imagens
+        proximaImagem()
+    }, timeRotation)
+}
+
+// quando o documento for totalmente carregado, será chamado a função start
+window.addEventListener("load", iniciar);
