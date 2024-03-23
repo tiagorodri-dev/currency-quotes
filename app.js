@@ -231,28 +231,50 @@ window.addEventListener("load", iniciar);
 
 window.addEventListener('load', async () => {
     try {
-        // Código para buscar cotações e realizar o cálculo de conversão
-        const moedaFinal = 'USD-BRL'; // Substitua pela moeda desejada
-        const valorInput = 100; // Substitua pelo valor de entrada desejado
+        const moedas = ['EUR-USD', 'GBP-USD', 'USD-JPY', 'USD-CHF','AUD-USD', 'USD-CAD']; // Adicione mais moedas conforme necessário
 
-        const apiUrl = url.replace(":moedas", moedaFinal);
-        const response = await fetch(apiUrl);
+        for (const moeda of moedas) {
+            const apiUrl = url.replace(":moedas", moedas);
+            const response = await fetch(apiUrl);
 
-        if (!response.ok) {
-            throw new Error(`Erro ao buscar cotações. Código: ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`Erro ao buscar cotações. Código: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Cotações para", moedas, ":", data);
+
+            // Atualize os elementos HTML com as classes correspondentes
+            const varEURUSD = document.querySelector(".varEURUSD")
+            varEURUSD.innerHTML = data.EURUSD.varBid + '%'
+
+            const varGBPUSD = document.querySelector(".varGBPUSD")
+            varGBPUSD.innerHTML = data.GBPUSD.varBid + '%'
+
+            const varUSDJPY = document.querySelector(".varUSDJPY")
+            varUSDJPY.innerHTML = data.USDJPY.varBid + '%'
+
+            const varUSDCHF = document.querySelector(".varUSDCHF")
+            varUSDCHF.innerHTML = data.USDCHF.varBid + '%'
+
+            const varAUDUSD = document.querySelector(".varAUDUSD")
+            varAUDUSD.innerHTML = data.AUDUSD.varBid + '%'
+
+            const varUSDCAD = document.querySelector(".varUSDCAD")
+            varUSDCAD.innerHTML = data.USDCAD.varBid + '%'
+
+            const atualizacao = document.querySelector(".atualizacao");
+            atualizacao.innerHTML = '<b>Última atualização às </b>' + new Date(data.EURUSD.create_date).toLocaleTimeString('pt-BR') + ', do dia ' + new Date(data.EURUSD.create_date).toLocaleDateString('pt-BR');
+
+            // const varBRLEUR = document.querySelector(".varBRLEUR")
+            // varBRLEUR.innerHTML = data.BRLEUR.varBid + '%'
         }
-
-        const data = await response.json();
-        console.log("Cotações: ", data);
-
-        // Defina o valor do elemento HTML para a última atualização
-        const atualizacao = document.querySelector(".atualizacao");
-        atualizacao.innerHTML = '<b>Última atualização às </b>' + new Date(data.USDBRL.create_date).toLocaleTimeString('pt-BR') + ', do dia ' + new Date(data.USDBRL.create_date).toLocaleDateString('pt-BR');
-
     } catch (error) {
         console.log("Erro ao buscar cotações: ", error);
     }
 });
+
+
 
 
 // atualização da aplicação
