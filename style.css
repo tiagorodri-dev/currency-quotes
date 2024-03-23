@@ -19,25 +19,31 @@
     display: flex;
     align-items: center;
     width: 100vw;
-    height: 450px;
-    margin: 30px auto;
-    position: relative;
+    height: 150px;
+    margin: 0 auto;
     overflow: hidden;
 }
 
 .teste {
     display: flex;
     flex-direction: row;
-    
     position: absolute;
-    top: 100px;
+    top: 0px;
     width: 150px;
-    animation: moedas 10s infinite linear;
+    animation: moedas 20s infinite linear;
+}
+
+.paridade {
+    margin: 0 20px;;
 }
 
 .paridade-img {
     display: flex;
     align-items: center;
+}
+
+.paridade span, p {
+    color: #FFFFFF;
 }
 
 @keyframes moedas {
@@ -124,7 +130,7 @@ main {
     width: 70%;
     background: #e6e6e6;
     border-radius: 20px;
-    margin: 0 auto 40px auto;
+    margin: 100px auto 40px auto;
     padding: 44px 24px 23px;
     z-index: 99;
     position: absolute;
