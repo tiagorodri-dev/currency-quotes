@@ -11,6 +11,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.atualizar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.button-atualizar, .button-limpar {
+    border-radius: 5px;
+    background: #772FD3;
+    border: none;
+    color: #ffffff;
+    width: 100px;
+    height: 35px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.button-atualizar:hover {
+    opacity: 0.8;
+}
+
+.button-atualizar:active {
+    opacity: 0.6;
 }
 
 .box-valor {
@@ -86,30 +113,6 @@ select, input {
     color: #555555;
     font-size: 16px;
 }
-
-button {
-    border-radius: 5px;
-    background: #772FD3;
-    width: 100%;
-    border: none;
-    color: #ffffff;
-    height: 48px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-button:active {
-    opacity: 0.6;
-}
-
-/* section {
-    
-} */
 
 .arrow {
     display: flex;

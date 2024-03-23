@@ -39,18 +39,6 @@ async function pegarCotacoes(moedaFinal, valorInput) {
                 style: 'currency',
                 currency: 'USD'
             }).format(valorInput);
-
-            // variacao = data.USDBRL.varBid
-
-            // if (variacao != Number.NEGATIVE_INFINITY) {
-            //     variacao.style.color = 'green'
-            //     variacao.textContent = data.USDBRL.varBid
-            // }
-
-            // else {
-            //     variacao.innerHTML = data.USDBRL.varBid
-            //     variacao.style.color = 'red'
-            // }
         }
 
         if(moedaFinal == 'EUR-BRL') {
@@ -131,9 +119,6 @@ async function pegarCotacoes(moedaFinal, valorInput) {
             style: 'currency',
             currency: 'BRL',
         }).format(valorConvertido.toFixed(2)) // Arredonda para 2 casas decimais
-
-        const atualizacao = document.querySelector(".atualizacao")
-        atualizacao.innerHTML = 'Ultima atualização às ' + data.USDBRL.create_date
     }
 
     catch (error) {
@@ -243,3 +228,64 @@ function iniciar() {
 
 // quando o documento for totalmente carregado, será chamado a função start
 window.addEventListener("load", iniciar);
+
+window.addEventListener('load', async () => {
+    try {
+        // Código para buscar cotações e realizar o cálculo de conversão
+        const moedaFinal = 'USD-BRL'; // Substitua pela moeda desejada
+        const valorInput = 100; // Substitua pelo valor de entrada desejado
+
+        const apiUrl = url.replace(":moedas", moedaFinal);
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error(`Erro ao buscar cotações. Código: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Cotações: ", data);
+
+        // Defina o valor do elemento HTML para a última atualização
+        const atualizacao = document.querySelector(".atualizacao");
+        atualizacao.innerHTML = '<b>Última atualização às </b>' + new Date(data.USDBRL.create_date).toLocaleTimeString('pt-BR') + ', do dia ' + new Date(data.USDBRL.create_date).toLocaleDateString('pt-BR');
+
+    } catch (error) {
+        console.log("Erro ao buscar cotações: ", error);
+    }
+});
+
+
+// atualização da aplicação
+const buttonAtualizar = document.querySelector(".button-atualizar");
+buttonAtualizar.addEventListener('click', () => {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Deseja atualizar a aplicação?',
+        text: 'A atualização recarregará a página e todo conteúdo será perdido.',
+        confirmButtonText: 'Sim',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        showCloseButton: true,
+        cancelButtonColor: '#d33',
+    }).then((result) => {
+        if(result.isConfirmed) {
+            window.location.reload();
+        }
+    })
+})
+
+
+const buttonLimpar = document.querySelector(".button-limpar");
+buttonLimpar.addEventListener('click', () => {
+    if (valorInput.value != "") {
+        valorInput.value = ""
+    }
+    else {
+        Swal.fire({
+            icon: 'info',
+            title: "O conteúdo está vazio!",
+            showCloseButton: true,
+            timer: 1000
+        });
+    }
+})
