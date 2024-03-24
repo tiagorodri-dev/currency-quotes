@@ -229,6 +229,7 @@ function iniciar() {
 // quando o documento for totalmente carregado, será chamado a função start
 window.addEventListener("load", iniciar);
 
+// fazendo requisição a API após o carregamento da página, para mostrar a variação da cotação no header da página
 window.addEventListener('load', async () => {
     try {
         const moedas = ['EUR-USD', 'GBP-USD', 'USD-JPY', 'USD-CHF','AUD-USD', 'USD-CAD', 'EUR-CHF']; // Adicione mais moedas conforme necessário
@@ -244,27 +245,82 @@ window.addEventListener('load', async () => {
             const data = await response.json();
             console.log("Cotações para", moedas, ":", data);
 
-            // Atualize os elementos HTML com as classes correspondentes
+            // EUR/USD
             const varEURUSD = document.querySelector(".varEURUSD")
-            varEURUSD.innerHTML = data.EURUSD.varBid + '%'
+            if (data.EURUSD.varBid >= 0) {
+                varEURUSD.style.color = 'green'
+                varEURUSD.innerHTML = '+' + data.EURUSD.varBid + '%'
+            }
+            else {
+                varEURUSD.style.color = 'red'
+                varEURUSD.innerHTML = data.EURUSD.varBid + '%'
+            }
 
+            // GBP/USD
             const varGBPUSD = document.querySelector(".varGBPUSD")
-            varGBPUSD.innerHTML = data.GBPUSD.varBid + '%'
+            if(data.GBPUSD.varBid >= 0) {
+                varGBPUSD.style.color = 'green'
+                varGBPUSD.innerHTML = '+' + data.GBPUSD.varBid + '%'
+            }
+            else {
+                varGBPUSD.style.color = 'red'
+                varGBPUSD.innerHTML = data.GBPUSD.varBid + '%'
+            }
 
+            // USD/JPY
             const varUSDJPY = document.querySelector(".varUSDJPY")
-            varUSDJPY.innerHTML = data.USDJPY.varBid + '%'
+            if(data.USDJPY.varBid >= 0) {
+                varUSDJPY.style.color = 'green'
+                varUSDJPY.innerHTML = '+' + data.USDJPY.varBid + '%'
+            }
+            else {
+                varUSDJPY.style.color = 'red'
+                varUSDJPY.innerHTML = data.USDJPY.varBid + '%'
+            }
 
+            // USD/CHF
             const varUSDCHF = document.querySelector(".varUSDCHF")
-            varUSDCHF.innerHTML = data.USDCHF.varBid + '%'
+            if(data.USDCHF.varBid >= 0) {
+                varUSDCHF.style.color = 'green'
+                varUSDCHF.innerHTML = '+' + data.USDCHF.varBid + '%'
+            }
+            else {
+                varUSDCHF.style.color = 'red'
+                varUSDCHF.innerHTML = data.USDCHF.varBid + '%'
+            }
 
+            // AUD/USD
             const varAUDUSD = document.querySelector(".varAUDUSD")
-            varAUDUSD.innerHTML = data.AUDUSD.varBid + '%'
+            if(data.AUDUSD.varBid >= 0) {
+                varAUDUSD.style.color = 'green'
+                varAUDUSD.innerHTML = '+' + data.AUDUSD.varBid + '%'
+            }
+            else {
+                varAUDUSD.style.color = 'red'
+                varAUDUSD.innerHTML = data.AUDUSD.varBid + '%'
+            }
 
+            // USD/CAD
             const varUSDCAD = document.querySelector(".varUSDCAD")
-            varUSDCAD.innerHTML = data.USDCAD.varBid + '%'
+            if(data.USDCAD.varBid >= 0) {
+                varUSDCAD.style.color = 'green'
+                varUSDCAD.innerHTML = '+' + data.USDCAD.varBid + '%'
+            }
+            else {
+                varUSDCAD.style.color = 'red'
+                varUSDCAD.innerHTML = data.USDCAD.varBid + '%'
+            }
 
+            // EUR/CHF
             const varEURCHF = document.querySelector(".varEURCHF")
-            varEURCHF.innerHTML = data.EURCHF.varBid + '%'
+            if(data.EURCHF.varBid >= 0) {
+                varEURCHF.style.color = 'green'
+                varEURCHF.innerHTML = '+' + data.EURCHF.varBid + '%'
+            }
+            else {
+                varEURCHF.style.color = 'red'
+                varEURCHF.innerHTML = data.EURCHF.varBid + '%'
+            }
 
             const atualizacao = document.querySelector(".atualizacao");
             atualizacao.innerHTML = '<b>Última atualização às </b>' + new Date(data.EURUSD.create_date).toLocaleTimeString('pt-BR') + ', do dia ' + new Date(data.EURUSD.create_date).toLocaleDateString('pt-BR');
