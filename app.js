@@ -232,7 +232,7 @@ window.addEventListener("load", iniciar);
 // fazendo requisição a API após o carregamento da página, para mostrar a variação da cotação no header da página
 window.addEventListener('load', async () => {
     try {
-        const moedas = ['EUR-USD', 'GBP-USD', 'USD-JPY', 'USD-CHF','AUD-USD', 'USD-CAD', 'EUR-CHF']; // Adicione mais moedas conforme necessário
+        const moedas = ['EUR-USD', 'GBP-USD', 'EUR-GBP', 'USD-JPY', 'BRL-GBP', 'USD-CHF','AUD-USD', 'USD-CAD', 'EUR-CHF', 'BRL-USD', 'EUR-CAD', 'BRL-CNY'];
 
         for (const moeda of moedas) {
             const apiUrl = url.replace(":moedas", moedas);
@@ -267,6 +267,17 @@ window.addEventListener('load', async () => {
                 varGBPUSD.innerHTML = data.GBPUSD.varBid + '%'
             }
 
+            // EUR/GBP
+            const varEURGBP = document.querySelector(".varEURGBP")
+            if(data.EURGBP.varBid >= 0) {
+                varEURGBP.style.color = 'green'
+                varEURGBP.innerHTML = '+' + data.EURGBP.varBid + '%'
+            }
+            else {
+                varEURGBP.style.color = 'red'
+                varEURGBP.innerHTML = data.EURGBP.varBid + '%'
+            }
+
             // USD/JPY
             const varUSDJPY = document.querySelector(".varUSDJPY")
             if(data.USDJPY.varBid >= 0) {
@@ -276,6 +287,17 @@ window.addEventListener('load', async () => {
             else {
                 varUSDJPY.style.color = 'red'
                 varUSDJPY.innerHTML = data.USDJPY.varBid + '%'
+            }
+
+            // BRL/GBP
+            const varBRLGBP = document.querySelector(".varBRLGBP")
+            if(data.BRLGBP.varBid >= 0) {
+                varBRLGBP.style.color = 'green'
+                varBRLGBP.innerHTML = '+' + data.BRLGBP.varBid + '%'
+            }
+            else {
+                varBRLGBP.style.color = 'red'
+                varBRLGBP.innerHTML = data.BRLGBP.varBid + '%'
             }
 
             // USD/CHF
@@ -322,8 +344,52 @@ window.addEventListener('load', async () => {
                 varEURCHF.innerHTML = data.EURCHF.varBid + '%'
             }
 
+            // BRL/USD
+            const varBRLUSD = document.querySelector(".varBRLUSD")
+            if(data.BRLUSD.varBid >= 0) {
+                varBRLUSD.style.color = 'green'
+                varBRLUSD.innerHTML = '+' + data.BRLUSD.varBid + '%'
+            }
+            else {
+                varBRLUSD.style.color = 'red'
+                varBRLUSD.innerHTML = data.BRLUSD.varBid + '%'
+            }
+
+            // EUR/CAD
+            const varEURCAD = document.querySelector(".varEURCAD")
+            if(data.EURCAD.varBid >= 0) {
+                varEURCAD.style.color = 'green'
+                varEURCAD.innerHTML = '+' + data.EURCAD.varBid + '%'
+            }
+            else {
+                varEURCAD.style.color = 'red'
+                varEURCAD.innerHTML = data.EURCAD.varBid + '%'
+            }
+
+            // GBP/JPY
+            // const varJPYGBP = document.querySelector(".varJPYGBP")
+            // if(data.JPYGBP.varBid >= 0) {
+            //     varJPYGBP.style.color = 'green'
+            //     varJPYGBP.innerHTML = '+' + data.JPYGBP.varBid + '%'
+            // }
+            // else {
+            //     varJPYGBP.style.color = 'red'
+            //     varJPYGBP.innerHTML = data.JPYGBP.varBid + '%'
+            // }
+
+            // BRL/CNY
+            const varBRLCNY = document.querySelector(".varBRLCNY")
+            if(data.BRLCNY.varBid >= 0) {
+                varBRLCNY.style.color = 'green'
+                varBRLCNY.innerHTML = '+' + data.BRLCNY.varBid + '%'
+            }
+            else {
+                varBRLCNY.style.color = 'red'
+                varBRLCNY.innerHTML = data.BRLCNY.varBid + '%'
+            }
+
             const atualizacao = document.querySelector(".atualizacao");
-            atualizacao.innerHTML = '<b>Última atualização às </b>' + new Date(data.EURUSD.create_date).toLocaleTimeString('pt-BR') + ', do dia ' + new Date(data.EURUSD.create_date).toLocaleDateString('pt-BR');
+            atualizacao.innerHTML = '<b>Última atualização às </b>' + new Date(data.EURUSD.create_date).toLocaleTimeString('pt-BR') + ' do dia ' + new Date(data.EURUSD.create_date).toLocaleDateString('pt-BR');
 
         }
     } catch (error) {
@@ -359,9 +425,9 @@ buttonLimpar.addEventListener('click', () => {
     else {
         Swal.fire({
             icon: 'info',
-            title: "O conteúdo está vazio!",
+            title: "O campo está vazio!",
             showCloseButton: true,
-            timer: 1000
+            timer: 1500
         });
     }
 })
