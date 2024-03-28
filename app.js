@@ -210,6 +210,8 @@ let max = images.length;
 function proximaImagem() {
 
     images[currentImageIndex].classList.remove("selected")
+    images[currentImageIndex].classList.add("proxima-imagem")
+
     currentImageIndex++
 
     if(currentImageIndex >= max) {
@@ -217,13 +219,14 @@ function proximaImagem() {
     }
 
     images[currentImageIndex].classList.add("selected")
+    images[currentImageIndex].classList.remove("proxima-imagem")
 }
 
 function iniciar() {
-    setInterval(() => {
-        // chamando função de troca de imagens
-        proximaImagem()
-    }, timeRotation)
+    // setInterval(() => {
+    //     // chamando função de troca de imagens
+    //     proximaImagem()
+    // }, timeRotation)
 }
 
 // quando o documento for totalmente carregado, será chamado a função start
@@ -232,7 +235,7 @@ window.addEventListener("load", iniciar);
 // fazendo requisição a API após o carregamento da página, para mostrar a variação da cotação no header da página
 window.addEventListener('load', async () => {
     try {
-        const moedas = ['EUR-USD', 'GBP-USD', 'EUR-GBP', 'USD-JPY', 'BRL-GBP', 'USD-CHF','AUD-USD', 'USD-CAD', 'EUR-CHF', 'BRL-USD', 'EUR-CAD', 'BRL-CNY'];
+        const moedas = ['EUR-USD', 'GBP-USD', 'BRL-EUR', 'EUR-GBP', 'USD-JPY', 'BRL-USD', 'EUR-AUD', 'USD-CHF', 'BRL-GBP', 'AUD-USD', 'USD-CAD', 'BRL-CNY', 'EUR-CHF', 'EUR-CAD', 'BRL-ARS'];
 
         for (const moeda of moedas) {
             const apiUrl = url.replace(":moedas", moedas);
@@ -267,6 +270,17 @@ window.addEventListener('load', async () => {
                 varGBPUSD.innerHTML = data.GBPUSD.varBid + '%'
             }
 
+            // BRL/EUR
+            const varBRLEUR = document.querySelector(".varBRLEUR")
+            if(data.BRLEUR.varBid >= 0) {
+                varBRLEUR.style.color = 'green'
+                varBRLEUR.innerHTML = '+' + data.BRLEUR.varBid + '%'
+            }
+            else {
+                varBRLEUR.style.color = 'red'
+                varBRLEUR.innerHTML = data.BRLEUR.varBid + '%'
+            }
+
             // EUR/GBP
             const varEURGBP = document.querySelector(".varEURGBP")
             if(data.EURGBP.varBid >= 0) {
@@ -289,15 +303,26 @@ window.addEventListener('load', async () => {
                 varUSDJPY.innerHTML = data.USDJPY.varBid + '%'
             }
 
-            // BRL/GBP
-            const varBRLGBP = document.querySelector(".varBRLGBP")
-            if(data.BRLGBP.varBid >= 0) {
-                varBRLGBP.style.color = 'green'
-                varBRLGBP.innerHTML = '+' + data.BRLGBP.varBid + '%'
+            // BRL/USD
+            const varBRLUSD = document.querySelector(".varBRLUSD")
+            if(data.BRLUSD.varBid >= 0) {
+                varBRLUSD.style.color = 'green'
+                varBRLUSD.innerHTML = '+' + data.BRLUSD.varBid + '%'
             }
             else {
-                varBRLGBP.style.color = 'red'
-                varBRLGBP.innerHTML = data.BRLGBP.varBid + '%'
+                varBRLUSD.style.color = 'red'
+                varBRLUSD.innerHTML = data.BRLUSD.varBid + '%'
+            }
+
+            // EUR/AUD
+            const varEURAUD = document.querySelector(".varEURAUD")
+            if(data.EURAUD.varBid >= 0) {
+                varEURAUD.style.color = 'green'
+                varEURAUD.innerHTML = '+' + data.EURAUD.varBid + '%'
+            }
+            else {
+                varEURAUD.style.color = 'red'
+                varEURAUD.innerHTML = data.EURAUD.varBid + '%'
             }
 
             // USD/CHF
@@ -309,6 +334,17 @@ window.addEventListener('load', async () => {
             else {
                 varUSDCHF.style.color = 'red'
                 varUSDCHF.innerHTML = data.USDCHF.varBid + '%'
+            }
+
+            // BRL/GBP
+            const varBRLGBP = document.querySelector(".varBRLGBP")
+            if(data.BRLGBP.varBid >= 0) {
+                varBRLGBP.style.color = 'green'
+                varBRLGBP.innerHTML = '+' + data.BRLGBP.varBid + '%'
+            }
+            else {
+                varBRLGBP.style.color = 'red'
+                varBRLGBP.innerHTML = data.BRLGBP.varBid + '%'
             }
 
             // AUD/USD
@@ -333,6 +369,17 @@ window.addEventListener('load', async () => {
                 varUSDCAD.innerHTML = data.USDCAD.varBid + '%'
             }
 
+            // BRL/CNY
+            const varBRLCNY = document.querySelector(".varBRLCNY")
+            if(data.BRLCNY.varBid >= 0) {
+                varBRLCNY.style.color = 'green'
+                varBRLCNY.innerHTML = '+' + data.BRLCNY.varBid + '%'
+            }
+            else {
+                varBRLCNY.style.color = 'red'
+                varBRLCNY.innerHTML = data.BRLCNY.varBid + '%'
+            }
+
             // EUR/CHF
             const varEURCHF = document.querySelector(".varEURCHF")
             if(data.EURCHF.varBid >= 0) {
@@ -342,17 +389,6 @@ window.addEventListener('load', async () => {
             else {
                 varEURCHF.style.color = 'red'
                 varEURCHF.innerHTML = data.EURCHF.varBid + '%'
-            }
-
-            // BRL/USD
-            const varBRLUSD = document.querySelector(".varBRLUSD")
-            if(data.BRLUSD.varBid >= 0) {
-                varBRLUSD.style.color = 'green'
-                varBRLUSD.innerHTML = '+' + data.BRLUSD.varBid + '%'
-            }
-            else {
-                varBRLUSD.style.color = 'red'
-                varBRLUSD.innerHTML = data.BRLUSD.varBid + '%'
             }
 
             // EUR/CAD
@@ -366,26 +402,15 @@ window.addEventListener('load', async () => {
                 varEURCAD.innerHTML = data.EURCAD.varBid + '%'
             }
 
-            // GBP/JPY
-            // const varJPYGBP = document.querySelector(".varJPYGBP")
-            // if(data.JPYGBP.varBid >= 0) {
-            //     varJPYGBP.style.color = 'green'
-            //     varJPYGBP.innerHTML = '+' + data.JPYGBP.varBid + '%'
-            // }
-            // else {
-            //     varJPYGBP.style.color = 'red'
-            //     varJPYGBP.innerHTML = data.JPYGBP.varBid + '%'
-            // }
-
-            // BRL/CNY
-            const varBRLCNY = document.querySelector(".varBRLCNY")
-            if(data.BRLCNY.varBid >= 0) {
-                varBRLCNY.style.color = 'green'
-                varBRLCNY.innerHTML = '+' + data.BRLCNY.varBid + '%'
+            // ARS/BRL
+            const varBRLARS = document.querySelector(".varBRLARS")
+            if(data.BRLARS.varBid >= 0) {
+                varBRLARS.style.color = 'green'
+                varBRLARS.innerHTML = '+' + data.BRLARS.varBid + '%'
             }
             else {
-                varBRLCNY.style.color = 'red'
-                varBRLCNY.innerHTML = data.BRLCNY.varBid + '%'
+                varBRLARS.style.color = 'red'
+                varBRLARS.innerHTML = data.BRLARS.varBid + '%'
             }
 
             const atualizacao = document.querySelector(".atualizacao");

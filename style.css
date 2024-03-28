@@ -12,14 +12,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .moedas {
     display: flex;
     align-items: center;
     width: 100vw;
-    height: 150px;
+    height: 20%;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -29,7 +29,7 @@
     flex-direction: row;
     position: absolute;
     top: 0px;
-    animation: moedas 30s infinite linear;
+    animation: moedas 38s infinite linear;
     padding: 15px;
 }
 
@@ -67,7 +67,7 @@
 
 @keyframes moedas {
     to {
-        left: -750px;
+        left: -2000px;
     }
 
     from {
@@ -75,15 +75,20 @@
     }
 }
 
+.img {
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
 .logo {
-    position: absolute;
-    width: 200px;
+    width: 150px;
 }
 
 .atualizar {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .button-atualizar, .button-limpar {
@@ -107,13 +112,14 @@
 
 .box-valor {
     width: 100%;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
 }
 
 .container {
     width: 100%;
     display: flex;
     flex-direction: row;
+    margin: 0 0 -40px 0;
 }
 
 .base, .secundaria {
@@ -133,28 +139,45 @@
     height: 100%;
     z-index: -3;
     position: absolute;
+    overflow: hidden;
 }
 
-#slider img {
+.image {
     opacity: 0;
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 800ms ease;
+    transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
     max-width: 100%;
     margin-right: 50px;
 }
 
 #slider img.selected {
     opacity: 1;
+    /* transform: translateX(-100%); */
 }
+
+/* .proxima-imagem {
+    animation: nextImage 5s infinite linear;
+}
+
+@keyframes nextImage {
+    to {
+        left: -100%;
+    }
+
+    from {
+        left: 50%;
+    }
+} */
 
 main {
     width: 70%;
+    height: 600px;
     background: #e6e6e6;
     border-radius: 20px;
-    margin: 100px auto 40px auto;
+    margin: 40px auto 40px auto;
     padding: 44px 24px 23px;
     z-index: 99;
     position: absolute;
@@ -179,11 +202,6 @@ select, input {
     font-size: 16px;
 }
 
-.arrow {
-    display: flex;
-    flex-direction: row;
-}
-
 .arrow-img {
     margin: 100px 0;
     rotate: 270deg;
@@ -196,10 +214,6 @@ select, input {
     gap: 4px;
 }
 
-.img-moeda-base, .img-moeda-secundaria {
-
-}
-
 .text-moeda-base, .text-moeda-secundaria {
     color: #777777;
     font-size: 14px;
@@ -209,4 +223,99 @@ select, input {
     color: #555555;
     font-weight: 700;
     font-size: 20px;
+}
+
+@media screen and (max-height: 805px) {
+    main {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-height: 759px) {
+    main {
+        margin: 150px 0 50px 0;
+    }
+}
+
+@media screen and (max-height: 705px) {
+    main {
+        margin: 100px 0 0 0;
+    }
+}
+
+@media screen and (max-height: 503px) {
+    /* main {
+        margin: 100px 0 0 0;
+    } */
+
+    /* .principal {
+        overflow-y: scroll;
+    }
+
+    main {
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    } */
+}
+
+
+/* media queries the width */
+@media screen and (max-width: 931px) {
+    .atualizar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 15px;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .atualizar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 15px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        column-gap: 5px;
+    }
+}
+
+@media screen and (max-width: 503px) {
+    .principal {
+        overflow-y: scroll;
+        height: 150vh;
+    }
+
+    main {
+        height: 85%;
+        margin: 100px 0 0 0;
+    }
+
+    .arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .arrow-img {
+        margin: 0;
+        rotate: 0deg;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
 }
