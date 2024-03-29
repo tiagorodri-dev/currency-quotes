@@ -225,44 +225,113 @@ select, input {
     font-size: 20px;
 }
 
+/* media queries the height */
 @media screen and (max-height: 805px) {
+    .principal {
+        height: 120vh;
+        overflow-y: scroll;
+    }
+
     main {
         margin-top: 100px;
     }
 }
 
-@media screen and (max-height: 759px) {
+@media screen and (max-height: 633px) {
     main {
-        margin: 150px 0 50px 0;
+        margin: 95px 0 0 0;
     }
 }
 
-@media screen and (max-height: 705px) {
+@media screen and (max-height: 593px) {
+    .principal {
+        height: 140vh;
+    }
+
+    main {
+        margin: 60px 0 0 0;
+    }
+}
+
+@media screen and (max-height: 533px) {
+    .principal {
+        height: 150vh;
+    }
+
     main {
         margin: 100px 0 0 0;
     }
 }
 
-@media screen and (max-height: 503px) {
-    /* main {
-        margin: 100px 0 0 0;
-    } */
-
-    /* .principal {
-        overflow-y: scroll;
+@media screen and (max-height: 482px) {
+    .principal {
+        height: 160vh;
     }
 
     main {
-        margin: 0;
+        margin: 100px 0 0 0;
     }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-    } */
 }
 
+@media screen and (max-height: 449px) {
+    .principal {
+        height: 170vh;
+    }
+
+    main {
+        margin: 100px 0 0 0;
+    }
+}
+
+@media screen and (max-height: 423px) {
+    .principal {
+        height: 180vh;
+    }
+
+    main {
+        margin: 100px 0 0 0;
+    }
+}
+
+@media screen and (max-height: 396px) {
+    .principal {
+        height: 190vh;
+    }
+
+    main {
+        margin: 100px 0 0 0;
+    }
+}
+
+@media screen and (max-height: 376px) {
+    .principal {
+        height: 200vh;
+    }
+
+    main {
+        margin: 100px 0 0 0;
+    }
+}
+
+@media screen and (max-height: 350px) {
+    .principal {
+        height: 220vh;
+    }
+
+    main {
+        margin: 100px 0 0 0;
+    }
+}
+
+@media screen and (max-height: 319px) {
+    .principal {
+        height: 250vh;
+    }
+
+    main {
+        margin: 100px 0 0 0;
+    }
+}
 
 /* media queries the width */
 @media screen and (max-width: 931px) {
@@ -280,7 +349,11 @@ select, input {
         display: flex;
         flex-direction: column;
         align-items: center;
-        row-gap: 15px;
+        row-gap: 20px;
+    }
+
+    .atualizacao {
+        text-align: center;
     }
 
     .buttons {
@@ -317,5 +390,28 @@ select, input {
         display: flex;
         flex-direction: column;
         margin: 0;
+    }
+}
+
+@media screen and (max-width: 378px) {
+    .principal {
+        height: 160vh;
+    }
+
+    main {
+        height: 85%;
+        margin: 130px 0 0 0;
+    }
+
+    .buttons {
+        display: flex;
+        row-gap: 5px;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 260px) {
+    .principal {
+        height: 170vh;
     }
 }
