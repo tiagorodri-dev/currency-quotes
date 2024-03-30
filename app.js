@@ -202,7 +202,7 @@ function moedaBaseAlterada() {
     }
 }
 
-let timeRotation = 4000;
+let timeRotation = 8000;
 let currentImageIndex = 0;
 let images = document.querySelectorAll("#slider img");
 let max = images.length;
@@ -223,10 +223,7 @@ function proximaImagem() {
 }
 
 function iniciar() {
-    // setInterval(() => {
-    //     // chamando função de troca de imagens
-    //     proximaImagem()
-    // }, timeRotation)
+    setInterval(() => { proximaImagem() }, timeRotation)
 }
 
 // quando o documento for totalmente carregado, será chamado a função start
