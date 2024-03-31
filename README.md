@@ -8,7 +8,7 @@ https://currency-quotes.vercel.app/
 
 ## 🎯 Objetivo:
 Realizar conversões das principais moedas do mundo para o Real e fornecer em tempo real as cotações das principais moedas do mundo.
-<br>
+<br><br>
 
 ## ⚡ Funcionalidades:
 <ul>
@@ -37,6 +37,15 @@ As tecnologias utilizadas foram: HTML, CSS, Javascript, Git e Vercel.
 </ul>
 <br>
 
+## 📙 Dicas de uso:
+  <ol>
+      <li>Adicione o valor que deseja converter.</li>
+      <li>Selecione a moeda base para conversão.</li>
+      <li>Caso desje limpar o valor e adicionar outro, clique em Limpar.</li>
+      <li>Caso queira cotações mais atualizadas, clique em Atualizar.</li>
+  </ol>
+  <br>
+  
 ## 💻 Telas:
 <div align="center">
   <img src="https://github.com/tiagorodri-dev/currency-quotes/assets/68871083/93439b2b-671f-4161-9af7-ed89f76e13ac" width="160">
