@@ -7,14 +7,15 @@ https://currency-quotes.vercel.app/
 <br><br>
 
 ## 🎯 Objetivo:
-Realizar conversões das principais moedas do mundo para o Real e fornecer em tempo real as cotações das principais moedas do mundo.
+Expandir meus conhecimentos relacionados ao consumo de API com Javascript. Alcançando como resultado o fornecimento de cotações atualizadas das principais moedas do mundo via API e realização de conversões entre elas e o Real Brasileiro.
 <br><br>
 
 ## ⚡ Funcionalidades:
 <ul>
-  <li>Conversão de moedas em tempo real através da integração com a Awesome API.</li>
-  <li>Atualização das cotações.</li>
+  <li>Conversão em tempo real.</li>
+  <li>Atualização das cotações a cada 30 segundos através da integração com a Awesome API.</li>
   <li>Limpeza do campo de valor.</li>
+  <li>Validação do tipo de caracter digitado no campo de valor.</li>
   <li>Responsividade para dispositivos móveis e tablets.</li>
 </ul>
 <br>
